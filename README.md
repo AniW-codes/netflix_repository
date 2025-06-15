@@ -270,6 +270,24 @@ from CTE_Category
 
 **Objective:** Categorize content as 'Bad' if it contains 'kill' or 'violence' and 'Good' otherwise. Count the number of items in each category.
 
+
+### 16. Find the Top Genres on Netflix
+
+```sql
+
+
+select 
+	TRIM(Unnest(String_to_array(listed_in,''))) as Genres,
+	Count(show_id) as total_count
+from netflix
+	group by Genres
+	order by total_count desc
+
+```
+
+**Objective:** Identify the most popular Genres on Netflix.
+
+
 ## Findings and Conclusion
 
 - **Content Distribution:** The dataset contains a diverse range of movies and TV shows with varying ratings and genres.
